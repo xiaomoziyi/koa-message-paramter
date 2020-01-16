@@ -54,7 +54,7 @@ describe('koa-paramter', function () {
     .get('/?id=x&name=foo')
     .expect(200)
     .expect({
-      message: 'should match /^\\d+$/',
+      message: 'id should match /^\\d+$/',
       code: 100000,
     }, done);
   });
@@ -215,7 +215,37 @@ describe('koa-paramter', function () {
     .get('/')
     .expect(200)
     .expect({
-      message: 'doit correspondre à /^\\d+$/',
+      message: 'id doit correspondre à /^\\d+$/',
+      code: 100000,
+    }, done);
+  });
+
+  it('should verify body error', function (done) {
+    const app = new Koa();
+    app.use(koaBody());
+    app.use(parameter(app));
+    app.use(async function (ctx) {
+      ctx.verifyParams({
+        id: 'id',
+        name: 'string',
+        age: {
+          type: 'int',
+          max: [20,'不得超过20岁']
+        }
+      });
+      ctx.body = 'passed';
+    });
+
+    request(app.listen())
+    .post('/?id=1&name=ss&age=25')
+    .send({
+      id: '1',
+      name: 'ss',
+      age: 25,
+    })
+    .expect(200)
+    .expect({
+      message: '不得超过20岁',
       code: 100000,
     }, done);
   });

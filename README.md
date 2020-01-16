@@ -1,6 +1,8 @@
 koa-message-parameter
 =======
 
+基于parameter和koa封装成的验证工具，可以自定义message
+
 ## Install
 
 ```bash
@@ -23,13 +25,14 @@ app.use(async function (ctx) {
     name: {
       type: 'string',
       message: '请输入用户名！',
-    }
+    },
+    age: {
+      type: 'int',
+      min: [5, '年龄不得小于5岁！'],
+    },
   });
 });
 ```
-
-Checkout [parameter](https://github.com/node-modules/parameter) to get all the rules.
-
 ## Translate
 
 You can override the translate method of parameter to implement I18n, by passing a function like this :
@@ -200,6 +203,25 @@ If type is `array`, there has four addition rule:
 - `[1, 2]` => `{type: 'enum', values: [1, 2]}`
 - `/\d+/` => `{type: 'string', required: true, allowEmpty: false, format: /\d+/}`
 
+### much message
+```
+
+ {
+   ... 
+   min: [2, 'can't smaller then 2']
+   ...
+ }
+
+=== equal to
+ {
+   ... 
+   min:2,
+   message: 'can't smaller then 2'
+   ...
+ }
+
+(min,max,format,compare all available)
+```
 ### `errors` examples
 
 ```js

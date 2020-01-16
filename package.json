@@ -1,6 +1,6 @@
 {
   "name": "koa-message-parameter",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "A parameter verify tools.",
   "main": "index.js",
   "files": [
@@ -10,6 +10,7 @@
     "test": "mocha -R spec -t 1000 test/*.test.js",
     "cov": "istanbul cover _mocha -- -t 1000 test/*.test.js",
     "ci": "npm run cov",
+    "paramter-example": "node parameter-example.js",
     "semantic-release": "semantic-release pre && npm publish && semantic-release post"
   },
   "devDependencies": {

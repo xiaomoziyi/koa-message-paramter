@@ -12,7 +12,7 @@
 
 const Parameter = require('./parameter');
 
-module.exports = function (app, translate) {
+module.exports = function (app = { context: {}}, translate) {
   let parameter;
 
   if (typeof translate === 'function') {
@@ -22,7 +22,6 @@ module.exports = function (app, translate) {
   } else {
     parameter = new Parameter()
   }
-
   app.context.verifyParams = function(rules, params) {
     if (!rules) {
       return;
