@@ -1,0 +1,43 @@
+{
+  "name": "koa-message-parameter",
+  "version": "1.0.0",
+  "description": "A parameter verify tools.",
+  "main": "index.js",
+  "files": [
+    "index.js"
+  ],
+  "scripts": {
+    "test": "mocha -R spec -t 1000 test/*.test.js",
+    "cov": "istanbul cover _mocha -- -t 1000 test/*.test.js",
+    "ci": "npm run cov",
+    "semantic-release": "semantic-release pre && npm publish && semantic-release post"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-preset-es2015": "^6.24.1",
+    "beautify-benchmark": "0",
+    "benchmark": "*",
+    "istanbul": "*",
+    "koa": "^2.11.0",
+    "koa-body": "^4.1.1",
+    "mocha": "^5.2.0",
+    "semantic-release": "^6.3.6",
+    "should": "*",
+    "supertest": "^4.0.2"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/xiaomoziyi/koa-message-paramter.git"
+  },
+  "keywords": [
+    "parameter",
+    "verify",
+    "koa",
+    "middleware"
+  ],
+  "engines": {
+    "node": ">= 7.6"
+  },
+  "author": "Fairy <fang_xiao-7.13@qq.com>",
+  "license": "MIT"
+}
