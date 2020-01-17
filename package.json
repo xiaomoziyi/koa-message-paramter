@@ -1,10 +1,11 @@
 {
   "name": "koa-message-parameter",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "A parameter verify tools.",
   "main": "index.js",
   "files": [
-    "index.js"
+    "index.js",
+    "parameter.js"
   ],
   "scripts": {
     "test": "mocha -R spec -t 1000 test/*.test.js",
