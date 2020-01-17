@@ -19,6 +19,7 @@ const app = new Koa();
 
 parameter(app); // add verifyParams method, but don't add middleware to catch the error
 // app.use(parameter(app)); // also add a middleware to catch the error.
+// if not add catch err func,service code 500;
 
 app.use(async function (ctx) {
   ctx.verifyParams({
@@ -30,7 +31,7 @@ app.use(async function (ctx) {
       type: 'int',
       min: [5, '年龄不得小于5岁！'],
     },
-  });
+  }); // throw apiError {};
 });
 ```
 ## Translate
