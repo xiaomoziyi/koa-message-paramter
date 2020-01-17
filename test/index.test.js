@@ -165,8 +165,8 @@ describe('koa-paramter', function () {
 
     request(app.listen())
     .get('/?id=x&name=foo')
-    .expect(200)
-    .expect('Validation Failed', done);
+    .expect(500)
+    .expect('Internal Server Error', done);
   });
 
   it('should verify input params', function (done) {
@@ -183,13 +183,14 @@ describe('koa-paramter', function () {
       };
 
       ctx.verifyParams(rule, params);
+
       ctx.body = 'passed';
     });
 
     request(app.listen())
     .get('/')
-    .expect(200)
-    .expect('Validation Failed', done);
+    .expect(500)
+    .expect('Internal Server Error', done);
   });
 
   it('should translate error message', function (done) {
